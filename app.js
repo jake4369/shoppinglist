@@ -9,6 +9,6 @@ app.use(express.json());
 app.use(cors());
 
 // ROUTES
-app.use("/api/v1/", itemRouter);
+app.use("/api/v1/items", itemRouter);
 
 module.exports = app;
