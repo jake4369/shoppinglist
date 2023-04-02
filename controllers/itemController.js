@@ -39,7 +39,7 @@ exports.getItems = catchAsync(async (req, res, next) => {
 });
 
 exports.getItemById = catchAsync(async (req, res, next) => {
-  const item = await findById(req.params.itemId);
+  const item = await Item.findById(req.params.itemId);
 
   res.status(200).json({
     status: "success",
