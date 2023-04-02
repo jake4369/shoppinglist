@@ -1,6 +1,7 @@
 const Item = require("./../models/itemModel");
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
+const { findById } = require("./../models/itemModel");
 
 const filterObj = (obj, ...allowedFields) => {
   const clonedObj = _.cloneDeep(obj);
@@ -33,6 +34,17 @@ exports.getItems = catchAsync(async (req, res, next) => {
     results: items.length,
     data: {
       items,
+    },
+  });
+});
+
+exports.getItemById = catchAsync(async (req, res, next) => {
+  const item = await findById(req.params.itemId);
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      item,
     },
   });
 });
